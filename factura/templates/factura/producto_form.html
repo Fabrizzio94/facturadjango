@@ -1,0 +1,35 @@
+{% extends 'factura/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h3>{{title}}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-resposive"> 
+                            <table class="table" id="tabla1">
+                                <thead>
+                                    {% block columns %}
+                                    {% endblock %}
+                                </thead>
+                                <tbody>
+                                    {% block rows %}
+                                    {% endblock %}
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary btn-add" href="#">Agregar producto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-success float-right">Guardar</button>
+    
+    
+</div>
+ {% endblock %}

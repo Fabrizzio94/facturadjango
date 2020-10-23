@@ -1,0 +1,127 @@
+{% extends 'factura/base.html' %}
+{% block content %}
+<div class="container">
+    <form method="POST">
+    <div class="row">
+        <div class="col-lg-12">
+               <div class="card card-default">
+                    <div class="card-header">
+                        <h3>{{title}}</h3>
+                    </div>
+                    <div class="card-body">
+                        <input type="hidden" name="action" value="{{ action }} ">
+                        <!-- -->
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="input-group mb-3">
+                                        <label class="col-sm-auto" for="">Cédula: </label>
+                                            <select class="custom-select" id="inputGroupSelect01">
+                                                {% for cliente in clientes %}
+                                                <option  selected>{{cliente.id_cliente }} --- {{cliente.nom_cliente}} </option>
+                                                {% endfor %}
+                                                <option disabled selected="selected">Escoga un cliente....</option>
+                                            </select>
+                                        
+                                    </div>
+                                </div>
+                                <div id="direccion" class="col-lg-6">
+                                    <label class="col-sm-auto" for="">Dirección: </label>
+                                    <label class="col-sm-auto" id="address" for=""></label>
+                                </div>
+                            </div>
+                            
+                        <!--  -->
+                       
+                    </div>
+                </div> 
+        </div>
+    </div>
+<!--</div>
+ <div class="container"> -->
+    <div class="row">
+        <div class="col-lg-12">
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h3>{{title_detalle}}</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Buscar productos -->
+                        <div class="form-group">
+                            <label for="search">Buscar:</label>
+                            <input name="search" type="text" class="form-control" placeholder="Producto" aria-label="Producto" aria-describedby="basic-addon1">
+                        </div>
+                        <hr>
+                        <!-- Tabla de productos -->
+                        <div class="table-resposive"> 
+                            <button type="button" class="btn btn-danger btn-sm removeAll"
+                            data-toggle="modal" data-target="#staticBackdrop">Limpiar</button>
+                            <hr>
+                            <table class="" id="tabla1">
+                                <thead>
+                                    <tr>
+                                        <td>Producto</td>
+                                        <td>Precio</td>
+                                        <td>Cantidad</td>
+                                        <td>Total</td>
+                                        <td>Opciones</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    
+    
+<!-- </div>
+<div class="container"> -->
+    <div class="row justify-content-end">
+        <div class="col-lg-7">
+            <div class="card card-default ">
+                <div class="card-body">
+                    <!-- <form action=""> -->
+                        <div class="form-group">
+                            <label class="col-sm-2 col-form-label" for="subtotal"> <strong>Subtotal:</strong></label>
+                            <input name="subtotal" type="text" class="form-control" readonly placeholder="0.00" aria-label="subtotal" aria-describedby="basic-addon1">
+                            <label class="col-sm-2 col-form-label" for="iva"><strong>iva:</strong></label>
+                            <input name="iva" type="text" class="form-control" readonly placeholder="0.00" aria-label="iva" aria-describedby="basic-addon1">
+                            <label class="col-sm-2 col-form-label" for="total"><strong>Total:</strong></label>
+                            <input name="total" type="text" class="form-control" readonly placeholder="0.00" aria-label="total" aria-describedby="basic-addon1">
+
+                        </div>
+                        <button id="btn-save" type="submit" class="btn btn-success float-right" >Guardar</button>
+                    </form>
+                </div>
+               
+            </div>
+            
+            <!-- modal -->
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">Confirmacion</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Esta seguro de limpiar su lista de productos?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                      <button id="btn-confirm" type="button" class="btn btn-primary">Aceptar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+    </form>
+</div>
+<!-- </div> -->
+{% endblock %}

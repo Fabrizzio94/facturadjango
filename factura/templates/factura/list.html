@@ -1,0 +1,28 @@
+{% extends 'factura/base.html' %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+{% endblock %}
+{% block columns %}
+    <tr>
+        <td>Producto</td>
+        <td>Valor</td>
+        <td>Cantidad</td>
+        <td>Total</td>
+        <td>Opciones</td>
+    </tr>
+{% endblock  %}
+    
+{% block rows %}
+    {% for producto in  object_list %}
+        <tr>
+            <td> {{producto.nom_producto}} </td>
+            <td>{{producto.precio}} </td>
+            <td> <input type="text" name="" id="cantidad"> </td>
+            <td>1.15 </td>
+            <td>
+                <a class="btn btn-primary">Edit</a>
+                <a href=" {% url 'delete_producto' producto.id_producto %} " class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
